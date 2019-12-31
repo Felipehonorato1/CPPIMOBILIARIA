@@ -186,7 +186,7 @@ void SalvaDados(vector<Imovel> imoveis)
         cout << "Nao foi possivel abrir o arquivo." << endl;
     }
 
-    for(int i=0;i < imoveis.size() ; i++){
+    for(int i=0;i < imoveis.size(); i++){
         arquivo << imoveis[i].getEndereco() << endl;
         arquivo << imoveis[i].getTipoNegocio() << endl;
         arquivo << imoveis[i].getValor() << endl;
@@ -213,7 +213,7 @@ int main()
 
         if(opcao == 7)
         {
-            SalvaDados();
+            SalvaDados(imoveis);
             break;
         }
 
