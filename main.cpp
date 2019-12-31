@@ -3,6 +3,7 @@
 #include "Apartamento.h"
 #include "Terreno.h"
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -175,10 +176,29 @@ void CadastraTerreno(vector<Imovel> &imoveis)
     imoveis.push_back(terreno);
 }
 
-void SalvaDados()
+void SalvaDados(vector<Imovel> imoveis)
 {
+    // TESTE SALVANDO ARQUIVOS.
+    ofstream file;
+    arquivo.open("imoveis.txt");
+    
+    if(!arquivo){
+        cout << "Nao foi possivel abrir o arquivo." << endl;
+    }
 
+    for(int i=0;i < imoveis.size() ; i++){
+        arquivo << imoveis[i].getEndereco() << endl;
+        arquivo << imoveis[i].getTipoNegocio() << endl;
+        arquivo << imoveis[i].getValor() << endl;
+        
+
+
+    }
+    
+    
 }
+
+    // FIM DO TESTE KKKKK
 
 int main()
 {
