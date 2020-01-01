@@ -8,13 +8,25 @@ class Apartamento : public Imovel
 {
     public:
         Apartamento();
-        Apartamento(std::string l, std::string b, std::string cep, std::string c, int n, double v, char t, double ar, double vC,
+        Apartamento(std::string t, std::string l, std::string b, std::string cep, std::string c, int n, double v, char tN, double ar, double vC,
                     int q, int an, int vG, std::string p);
+
+        int getQuartos();
+
+        int getAndar();
+
+        int getVagasGaragem();
+
+        double getArea();
+
+        double getValorCondominio();
+
+        std::string getPosicao();
 
     protected:
 
     private:
-        double area, valorCondominio, tipoImovel;
+        double area, valorCondominio;
         int quartos, andar, vagasGaragem;
         std::string posicao;
 };

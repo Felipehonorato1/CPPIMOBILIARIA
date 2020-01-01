@@ -1,0 +1,34 @@
+# depslib dependency file v1.0
+1577900687 source:c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\imobiliaria\main.cpp
+	<iostream>
+	"Casa.h"
+	"Apartamento.h"
+	"Terreno.h"
+	<vector>
+	<fstream>
+
+1577903945 source:c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\imobiliaria\src\apartamento.cpp
+	"Apartamento.h"
+
+1577903945 c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\imobiliaria\include\apartamento.h
+	<Imovel.h>
+
+1577903945 c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\imobiliaria\include\imovel.h
+	<string>
+
+1577903946 source:c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\imobiliaria\src\casa.cpp
+	"Casa.h"
+
+1577903945 c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\imobiliaria\include\casa.h
+	<Imovel.h>
+
+1577903945 source:c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\imobiliaria\src\terreno.cpp
+	"Terreno.h"
+
+1577903946 c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\imobiliaria\include\terreno.h
+	<Imovel.h>
+
+1577903946 source:c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\imobiliaria\src\imovel.cpp
+	"Imovel.h"
+	<sstream>
+

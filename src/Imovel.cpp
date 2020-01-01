@@ -1,28 +1,14 @@
 #include "Imovel.h"
 #include <sstream>
 
-Imovel::Imovel()
+int Imovel::getTipoImovel()
 {
-    //ctor
-    logradouro = "Rua nao identificada";
-    bairro = "Bairro nao identificado";
-    CEP = "Nao identificado";
-    cidade = "Cidade nao identificada";
-    numero = 0;
-    valor = 0;
-    tipoNegocio = 'N';
+    return tipoImovel;
 }
 
-Imovel::Imovel(std::string l, std::string b, std::string cep, std::string c, int n, double v, char t)
+std::string Imovel::getTitulo()
 {
-    //ctor
-    logradouro = l;
-    bairro = b;
-    CEP = cep;
-    cidade = c;
-    numero = n;
-    valor = v;
-    tipoNegocio = t;
+    return titulo;
 }
 
 double Imovel::getValor()

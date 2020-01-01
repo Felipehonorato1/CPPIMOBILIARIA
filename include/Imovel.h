@@ -6,8 +6,9 @@
 class Imovel
 {
     public:
-        Imovel();
-        Imovel(std::string l, std::string b, std::string cep, std::string c, int n, double v, char t);
+        int getTipoImovel();
+
+        std::string getTitulo();
 
         double getValor();
 
@@ -16,8 +17,8 @@ class Imovel
         std::string getEndereco();
 
     protected:
-        std::string logradouro, bairro, CEP, cidade;
-        int numero;
+        std::string titulo, logradouro, bairro, CEP, cidade;
+        int tipoImovel, numero;
         double valor;
         char tipoNegocio;
 
