@@ -28,7 +28,7 @@ void MenuTipoImovel()
     cout << "==================================================================================" << endl;
 }
 
-void CadastraCasa(vector<Imovel> &imoveis)
+void CadastraCasa(vector<Imovel*> &imoveis)
 {
     string t, l, b, cep, c;
     int n, p, q;
@@ -73,12 +73,12 @@ void CadastraCasa(vector<Imovel> &imoveis)
     cout << "\t\t Valor: ";
     cin >> v;
 
-    Casa casa = Casa(t, l, b, cep, c, n, v, tN, p, q, aT, aC);
+    Casa *casa = new Casa(t, l, b, cep, c, n, v, tN, p, q, aT, aC);
 
     imoveis.push_back(casa);
 }
 
-void CadastraApartamento(vector<Imovel> &imoveis)
+void CadastraApartamento(vector<Imovel*> &imoveis)
 {
     string t, l, b, cep, c, p;
     int n, an, q, vG;
@@ -130,12 +130,12 @@ void CadastraApartamento(vector<Imovel> &imoveis)
     cout << "\t\t Valor: ";
     cin >> v;
 
-    Apartamento apartamento = Apartamento(t, l, b, cep, c, n, v, tN, ar, vC, q, an, vG, p);
+    Apartamento *apartamento = new Apartamento(t, l, b, cep, c, n, v, tN, ar, vC, q, an, vG, p);
 
     imoveis.push_back(apartamento);
 }
 
-void CadastraTerreno(vector<Imovel> &imoveis)
+void CadastraTerreno(vector<Imovel*> &imoveis)
 {
     string t, l, b, cep, c, p;
     int n;
@@ -171,76 +171,76 @@ void CadastraTerreno(vector<Imovel> &imoveis)
     cout << "\t\t Valor: ";
     cin >> v;
 
-    Terreno terreno = Terreno(t, l, b, cep, c, n, v, tN, a);
+    Terreno *terreno = new Terreno(t, l, b, cep, c, n, v, tN, a);
 
     imoveis.push_back(terreno);
 }
 
-void ExibeCasa(Casa casa)
+void ExibeCasa(Imovel* casa)
 {
-    cout << "\t\t\t " << casa.getTitulo() << endl;
+    cout << "\t\t\t " << casa->getTitulo() << endl;
 
-    cout << "\t\t Endereco: " << casa.getEndereco() << endl;
+    cout << "\t\t Endereco: " << casa->getEndereco() << endl;
 
-    cout << "\t\t Numero de pavimentos: " << casa.getPavimentos() << endl;
+    cout << "\t\t Numero de pavimentos: " << casa->getPavimentos() << endl;
 
-    cout << "\t\t Numero de quartos: " << casa.getQuartos() << endl;
+    cout << "\t\t Numero de quartos: " << casa->getQuartos() << endl;
 
-    cout << "\t\t Area do terreno: " << casa.getAreaTerreno() << "m2" << endl;
+    cout << "\t\t Area do terreno: " << casa->getAreaTerreno() << "m2" << endl;
 
-    cout << "\t\t Area construida: " << casa.getAreaConstruida() << "m2" << endl;
+    cout << "\t\t Area construida: " << casa->getAreaConstruida() << "m2" << endl;
 
-    if (casa.getTipoNegocio() == 'A' || casa.getTipoNegocio() == 'a')
+    if (casa->getTipoNegocio() == 'A' || casa->getTipoNegocio() == 'a')
         cout << "\t\t Disponivel para aluguel" << endl;
-    else if (casa.getTipoNegocio() == 'V' || casa.getTipoNegocio() == 'v')
+    else if (casa->getTipoNegocio() == 'V' || casa->getTipoNegocio() == 'v')
         cout << "\t\t Disponivel para venda" << endl;
 
-    cout << "\t\t Valor: R$" << casa.getValor() << endl;
+    cout << "\t\t Valor: R$" << casa->getValor() << endl;
 }
 
-void ExibeApartamento(Apartamento apartamento)
+void ExibeApartamento(Imovel* apartamento)
 {
-    cout << "\t\t\t " << apartamento.getTitulo() << endl;
+    cout << "\t\t\t " << apartamento->getTitulo() << endl;
 
-    cout << "\t\t Endereco: " << apartamento.getEndereco() << endl;
+    cout << "\t\t Endereco: " << apartamento->getEndereco() << endl;
 
-    cout << "\t\t Andar: " << apartamento.getAndar() << endl;
+    cout << "\t\t Andar: " << apartamento->getAndar() << endl;
 
-    cout << "\t\t Numero de quartos: " << apartamento.getQuartos() << endl;
+    cout << "\t\t Numero de quartos: " << apartamento->getQuartos() << endl;
 
-    cout << "\t\t Numero de vagas na garagem: " << apartamento.getVagasGaragem() << endl;
+    cout << "\t\t Numero de vagas na garagem: " << apartamento->getVagasGaragem() << endl;
 
-    cout << "\t\t Area: " << apartamento.getArea() << "m2" << endl;
+    cout << "\t\t Area: " << apartamento->getArea() << "m2" << endl;
 
-    cout << "\t\t Posicao: " << apartamento.getPosicao() << endl;
+    cout << "\t\t Posicao: " << apartamento->getPosicao() << endl;
 
-    cout << "\t\t Valor do condominio: R$" << apartamento.getValorCondominio() << endl;
+    cout << "\t\t Valor do condominio: R$" << apartamento->getValorCondominio() << endl;
 
-    if (apartamento.getTipoNegocio() == 'A' || apartamento.getTipoNegocio() == 'a')
+    if (apartamento->getTipoNegocio() == 'A' || apartamento->getTipoNegocio() == 'a')
         cout << "\t\t Disponivel para aluguel" << endl;
-    else if (apartamento.getTipoNegocio() == 'V' || apartamento.getTipoNegocio() == 'v')
+    else if (apartamento->getTipoNegocio() == 'V' || apartamento->getTipoNegocio() == 'v')
         cout << "\t\t Disponivel para venda" << endl;
 
-    cout << "\t\t Valor: R$" << apartamento.getValor() << endl;
+    cout << "\t\t Valor: R$" << apartamento->getValor() << endl;
 }
 
-void ExibeTerreno(Terreno terreno)
+void ExibeTerreno(Imovel* terreno)
 {
-    cout << "\t\t\t " << terreno.getTitulo() << endl;
+    cout << "\t\t\t " << terreno->getTitulo() << endl;
 
-    cout << "\t\t Endereco: " << terreno.getEndereco() << endl;
+    cout << "\t\t Endereco: " << terreno->getEndereco() << endl;
 
-    cout << "\t\t Area: " << terreno.getArea() << "m2" << endl;
+    cout << "\t\t Area: " << terreno->getArea() << "m2" << endl;
 
-    if (terreno.getTipoNegocio() == 'A' || terreno.getTipoNegocio() == 'a')
+    if (terreno->getTipoNegocio() == 'A' || terreno->getTipoNegocio() == 'a')
         cout << "\t\t Disponivel para aluguel" << endl;
-    else if (terreno.getTipoNegocio() == 'V' || terreno.getTipoNegocio() == 'v')
+    else if (terreno->getTipoNegocio() == 'V' || terreno->getTipoNegocio() == 'v')
         cout << "\t\t Disponivel para venda" << endl;
 
-    cout << "\t\t Valor: R$" << terreno.getValor() << endl;
+    cout << "\t\t Valor: R$" << terreno->getValor() << endl;
 }
 
-void SalvaDados(vector<Imovel> imoveis)
+void SalvaDados(vector<Imovel*> imoveis)
 {
     ofstream arquivo;
     arquivo.open("imoveis.txt");
@@ -251,15 +251,15 @@ void SalvaDados(vector<Imovel> imoveis)
 
     unsigned int tamanho = imoveis.size(); //a chamada da função size() no for é custosa, é mais recomendável que se crie uma variável com o seu valor
     for(unsigned int i = 0; i < tamanho; i++){
-        arquivo << imoveis[i].getEndereco() << endl;
-        arquivo << imoveis[i].getTipoNegocio() << endl;
-        arquivo << imoveis[i].getValor() << endl;
+        arquivo << imoveis[i]->getEndereco() << endl;
+        arquivo << imoveis[i]->getTipoNegocio() << endl;
+        arquivo << imoveis[i]->getValor() << endl;
     }
 }
 
 int main()
 {
-    vector<Imovel> imoveis;
+    vector<Imovel*> imoveis;
 
     while(1)
     {
@@ -280,6 +280,7 @@ int main()
                 MenuTipoImovel();
                 cout << "\t\t Digite uma opcao: ";
                 cin >> tipoImovel;
+                cout << endl;
 
                 if(tipoImovel == 1){
                     CadastraCasa(imoveis);
@@ -293,21 +294,25 @@ int main()
                 break;
 
             case 2:
-                /*
-                EU NÃO SEI FAZER POLIMORFISMO
+                cout << endl;
+
                 unsigned int tamanho = imoveis.size();
                 for(unsigned int i = 0; i < tamanho; i++){
-                    if(imoveis[i].getTipoImovel() == 1)
+                    if(imoveis[i]->getTipoImovel() == 1)
                         ExibeCasa(imoveis[i]);
-                    else if(imoveis[i].getTipoImovel() == 2)
+                    else if(imoveis[i]->getTipoImovel() == 2)
                         ExibeApartamento(imoveis[i]);
                     else
                         ExibeTerreno(imoveis[i]);
                     cout << endl;
                 }
-                */
                 break;
         }
+    }
+
+    unsigned int tamanho = imoveis.size();
+    for (unsigned int i = 0; i < tamanho; i++){
+        delete imoveis[0];
     }
 
     return 0;
