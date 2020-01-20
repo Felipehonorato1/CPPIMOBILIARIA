@@ -245,16 +245,86 @@ void SalvaDados(vector<Imovel*> imoveis)
     ofstream arquivo;
     arquivo.open("imoveis.txt");
 
-    if(!arquivo){
+    if(!arquivo.is_open()){
         cout << "Nao foi possivel abrir o arquivo." << endl;
     }
 
     unsigned int tamanho = imoveis.size(); //a chamada da função size() no for é custosa, é mais recomendável que se crie uma variável com o seu valor
     for(unsigned int i = 0; i < tamanho; i++){
-        arquivo << imoveis[i]->getEndereco() << endl;
-        arquivo << imoveis[i]->getTipoNegocio() << endl;
-        arquivo << imoveis[i]->getValor() << endl;
+                    arquivo << imoveis[i]->getTitulo() << endl;
+                    arquivo << imoveis[i]->getTipoImovel() << endl;
+                    //arquivo << imoveis[i]->getEndereco() << endl;
+                    arquivo << imoveis[i]->getTipoNegocio() << endl;
+                    arquivo << imoveis[i]->getValor() << endl;
+
+            switch(imoveis[i]->getTipoImovel()){
+
+                case 1: //SGINIFICANOD Q EH CASA
+
+                    arquivo << imoveis[i]->getArea() << endl;
+                    arquivo << imoveis[i]->getAreaConstruida() << endl;
+                    arquivo << imoveis[i]->getPavimentos() << endl;
+                    arquivo << imoveis[i]->getQuartos() << endl;
+                    break;
+
+                case 2: //SIGNIFICANDO QUE É UM APTO, PEGAR OS ATRIBUTOS DOS APARTAMENTOS
+
+                    arquivo << imoveis[i]->getPosicao() << endl;
+                    arquivo << imoveis[i]->getVagasGaragem() << endl;
+                    arquivo << imoveis[i]->getValorCondominio() << endl;
+                    arquivo << imoveis[i]->getAndar() << endl;
+                    arquivo << imoveis[i]->getQuartos() << endl;
+                    break;
+                case 3: //SIGNIFICANDO Q EH UM LOTE
+
+                    arquivo << imoveis[i]->getAreaTerreno() << endl;
+                    break;
+                }
     }
+}
+
+vector<Imovel*> LeArquivo(){
+    vector<Imovel*> imoveis;
+    fstream arquivo;
+    arquivo.open("imoveis.txt");
+    if(!arquivo.is_open()) cout << "Impossivel ler o arquivo" << endl;
+
+    // ATRIBUTOS
+    string titulo,cepe;
+    int quartos,pavimentos,andar,numero;
+    double area,areaconstruida;
+    int tipo;
+    char tdp;
+    double value;
+
+    while(1){
+        if(arquivo.bad() || arquivo.eof() || arquivo.fail()) break;
+
+        arquivo >> tipo;
+        arquivo >> tdp;
+        arquivo >> value;
+
+            switch(tipo){
+                case 1:
+                arquivo >> areas;
+                arquivo >> areaconstruida;
+                arquivo >> pavimentos;
+                arquivo >> quartos;
+                imoveis.push_back(new Casa(//ATRIBUTOS))
+                    break;
+                case 2:
+
+
+                imoveis.push_back(new Apartamento(//ATRIBUTOS))
+                    break;
+                case 3:
+
+
+                imoveis.push_back(new Terreno(//ATRIBUTOS/))
+                    break;
+            }
+    }
+    return imoveis;
 }
 
 int main()
