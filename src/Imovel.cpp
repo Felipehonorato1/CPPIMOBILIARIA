@@ -78,3 +78,24 @@ std::string Imovel::getPosicao()
 {
     return "";
 }
+
+
+std::string Imovel::getLogradouro(){
+    return logradouro;
+}
+
+std::string Imovel::getBairro(){
+    return bairro;
+}
+
+        std::string Imovel::getCidade(){
+        return cidade;
+        }
+
+        std::string Imovel::getCEP(){
+        return CEP;
+        }
+
+        int Imovel::getNumero(){
+        return numero;
+        }

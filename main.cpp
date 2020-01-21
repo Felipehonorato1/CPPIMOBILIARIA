@@ -253,7 +253,11 @@ void SalvaDados(vector<Imovel*> imoveis)
     for(unsigned int i = 0; i < tamanho; i++){
                     arquivo << imoveis[i]->getTitulo() << endl;
                     arquivo << imoveis[i]->getTipoImovel() << endl;
-                    //arquivo << imoveis[i]->getEndereco() << endl;
+                    arquivo << imoveis[i]->getLogradouro() << endl;
+                    arquivo << imoveis[i]->getBairro() << endl;
+                    arquivo << imoveis[i]->getCidade() << endl;
+                    arquivo << imoveis[i]->getNumero() << endl;
+                    arquivo << imoveis[i]->getCEP() << endl;
                     arquivo << imoveis[i]->getTipoNegocio() << endl;
                     arquivo << imoveis[i]->getValor() << endl;
 
@@ -261,7 +265,7 @@ void SalvaDados(vector<Imovel*> imoveis)
 
                 case 1: //SGINIFICANOD Q EH CASA
 
-                    arquivo << imoveis[i]->getArea() << endl;
+                    arquivo << imoveis[i]->getAreaTerreno() << endl;
                     arquivo << imoveis[i]->getAreaConstruida() << endl;
                     arquivo << imoveis[i]->getPavimentos() << endl;
                     arquivo << imoveis[i]->getQuartos() << endl;
@@ -281,38 +285,58 @@ void SalvaDados(vector<Imovel*> imoveis)
                     break;
                 }
     }
-}
+    arquivo.close();
+    }
 
 vector<Imovel*> LeArquivo(){
     vector<Imovel*> imoveis;
-    fstream arquivo;
+    ifstream arquivo;
     arquivo.open("imoveis.txt");
     if(!arquivo.is_open()) cout << "Impossivel ler o arquivo" << endl;
 
     // ATRIBUTOS
-    string titulo,cepe;
+    string titulo,cepe,rua,bairro,cidade;
     int quartos,pavimentos,andar,numero;
-    double area,areaconstruida;
-    int tipo;
-    char tdp;
+    double areas,areaconstruida;
+    int tipoImov;
+    char tNegocio;
     double value;
 
     while(1){
         if(arquivo.bad() || arquivo.eof() || arquivo.fail()) break;
-
-        arquivo >> tipo;
-        arquivo >> tdp;
+        getline(arquivo,titulo);
+        cout << "TITULO: " << titulo << endl;
+        arquivo >> tipoImov;
+        cout << "TIPO IMOVEL: " << tipoImov << endl;
+        getline(arquivo,rua);
+        cout << "RUA: " << rua << endl;
+        getline(arquivo,bairro);
+        cout << "BAIRRO: " << bairro << endl;
+        getline(arquivo,cidade);
+        cout << "CIDADE: " << cidade << endl;
+        arquivo >> numero;
+        cout << "NUMERO: " << numero << endl;
+        getline(arquivo,cepe);
+        cout << "CEP: " << cepe << endl;
+        arquivo >> tNegocio;
+        cout << "TIPO DE NEGOCIO: " << tNegocio << endl;
         arquivo >> value;
+        cout << "VALOR: " << value << endl;
 
-            switch(tipo){
+            switch(tipoImov){
                 case 1:
                 arquivo >> areas;
+                cout << "AREA TERRENO: " << areas << endl;
                 arquivo >> areaconstruida;
+                cout << "AREA CONSTRUIDA: " << areaconstruida << endl;
                 arquivo >> pavimentos;
+                cout << "PAVIMENTOS: " << pavimentos << endl;
                 arquivo >> quartos;
-                imoveis.push_back(new Casa(//ATRIBUTOS))
+                cout << "QUARTOS: " << quartos << endl;
+
+                imoveis.push_back(new Casa(titulo,rua,bairro,cepe,cidade,numero,value,tNegocio,pavimentos,quartos,areas,areaconstruida));
                     break;
-                case 2:
+           /*     case 2:
 
 
                 imoveis.push_back(new Apartamento(//ATRIBUTOS))
@@ -320,16 +344,17 @@ vector<Imovel*> LeArquivo(){
                 case 3:
 
 
-                imoveis.push_back(new Terreno(//ATRIBUTOS/))
+                imoveis.push_back(new Terreno()
                     break;
-            }
+            */}
     }
+    arquivo.close();
     return imoveis;
 }
 
 int main()
 {
-    vector<Imovel*> imoveis;
+    vector<Imovel*> imoveis = LeArquivo();
 
     while(1)
     {
@@ -340,8 +365,11 @@ int main()
 
         if(opcao == 7)
         {
-            SalvaDados(imoveis);
             break;
+        }
+        if(opcao == 6) {
+            SalvaDados(imoveis);
+            cout << "\t\t DADOS SALVOS!" << endl;
         }
 
         switch(opcao)
@@ -377,6 +405,7 @@ int main()
                     cout << endl;
                 }
                 break;
+
         }
     }
 

@@ -1,8 +1,13 @@
-rua da areia, 1500 - altipl. joao person. CEP: 123
-a
-1.23333e+006
-norte
-7
-123
-4502
+VARANDA
+1
+QUARTEIRAO
+FILADELFIA
+JMP
+230
+58046-485
+V
+1
+100
+100
+12
 12

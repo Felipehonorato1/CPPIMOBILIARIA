@@ -18,6 +18,16 @@ class Imovel
 
         std::string getEndereco();
 
+        std::string getLogradouro();
+
+        std::string getBairro();
+
+        std::string getCidade();
+
+        std::string getCEP();
+
+        int getNumero();
+
         virtual int getPavimentos();
 
         virtual int getQuartos();
