@@ -308,6 +308,7 @@ vector<Imovel*> LeArquivo(){
         cout << "TITULO: " << titulo << endl;
         arquivo >> tipoImov;
         cout << "TIPO IMOVEL: " << tipoImov << endl;
+        arquivo.ignore();
         getline(arquivo,rua);
         cout << "RUA: " << rua << endl;
         getline(arquivo,bairro);
@@ -316,6 +317,7 @@ vector<Imovel*> LeArquivo(){
         cout << "CIDADE: " << cidade << endl;
         arquivo >> numero;
         cout << "NUMERO: " << numero << endl;
+        arquivo.ignore();
         getline(arquivo,cepe);
         cout << "CEP: " << cepe << endl;
         arquivo >> tNegocio;
