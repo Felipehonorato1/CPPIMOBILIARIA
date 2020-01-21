@@ -32,13 +32,14 @@
 	"Imovel.h"
 	<sstream>
 
-1579570644 source:c:\users\felipe honorato\documents\cppimobiliaria\main.cpp
+1579619911 source:c:\users\felipe honorato\documents\cppimobiliaria\main.cpp
 	<iostream>
 	"Casa.h"
 	"Apartamento.h"
 	"Terreno.h"
 	<vector>
 	<fstream>
+	<sstream>
 
 1579540589 c:\users\felipe honorato\documents\cppimobiliaria\include\casa.h
 	<Imovel.h>

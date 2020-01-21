@@ -4,6 +4,7 @@
 #include "Terreno.h"
 #include <vector>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -276,6 +277,7 @@ void SalvaDados(vector<Imovel*> imoveis)
                     arquivo << imoveis[i]->getPosicao() << endl;
                     arquivo << imoveis[i]->getVagasGaragem() << endl;
                     arquivo << imoveis[i]->getValorCondominio() << endl;
+                    arquivo << imoveis[i]->getArea() << endl;
                     arquivo << imoveis[i]->getAndar() << endl;
                     arquivo << imoveis[i]->getQuartos() << endl;
                     break;
@@ -295,12 +297,12 @@ vector<Imovel*> LeArquivo(){
     if(!arquivo.is_open()) cout << "Impossivel ler o arquivo" << endl;
 
     // ATRIBUTOS
-    string titulo,cepe,rua,bairro,cidade;
-    int quartos,pavimentos,andar,numero;
+    string titulo,cepe,rua,bairro,cidade,posicao;
+    int quartos,pavimentos,andar,numero,vagasGaragem;
     double areas,areaconstruida;
     int tipoImov;
     char tNegocio;
-    double value;
+    double value,valorCondominio;
 
     while(1){
         if(arquivo.bad() || arquivo.eof() || arquivo.fail()) break;
@@ -314,30 +316,38 @@ vector<Imovel*> LeArquivo(){
         arquivo.ignore();
         getline(arquivo,cepe);
         arquivo >> tNegocio;
-        arquivo.ignore();
         arquivo >> value;
-        arquivo.ignore();
 
             switch(tipoImov){
                 case 1:
+                {
                 arquivo >> areas;
                 arquivo >> areaconstruida;
                 arquivo >> pavimentos;
                 arquivo >> quartos;
-                imoveis.push_back(new Casa(titulo,rua,bairro,cepe,cidade,numero,value,tNegocio,pavimentos,quartos,areas,areaconstruida));
+                Casa *casa = new Casa(titulo,rua,bairro,cepe,cidade,numero,value,tNegocio,pavimentos,quartos,areas,areaconstruida);
+                imoveis.push_back(casa);
                     break;
-           /*     case 2:
-
-
-                imoveis.push_back(new Apartamento(//ATRIBUTOS))
+                    }
+                case 2:
+                    {
+                arquivo >> posicao;
+                arquivo >> vagasGaragem;
+                arquivo >> valorCondominio;
+                arquivo >> areas;
+                arquivo >> andar;
+                arquivo >> quartos;
+                imoveis.push_back(new Apartamento(titulo,rua,bairro,cepe,cidade,numero,value,tNegocio,areas,valorCondominio,quartos,andar,vagasGaragem,posicao));
                     break;
-                case 3:
-
-
-                imoveis.push_back(new Terreno()
-                    break;
-            */}
+                    }
+//                case 3:
+//
+//
+//                imoveis.push_back(new Terreno()
+//                    break;
+            }
     }
+
     arquivo.close();
     return imoveis;
 }
@@ -352,15 +362,6 @@ int main()
         cout << "\t\t Digite uma opcao: ";
         int opcao, tipoImovel;
         cin >> opcao;
-
-        if(opcao == 7)
-        {
-            break;
-        }
-        if(opcao == 6) {
-            SalvaDados(imoveis);
-            cout << "\t\t DADOS SALVOS!" << endl;
-        }
 
         switch(opcao)
         {
@@ -382,8 +383,8 @@ int main()
                 break;
 
             case 2:
+                {
                 cout << endl;
-
                 unsigned int tamanho = imoveis.size();
                 for(unsigned int i = 0; i < tamanho; i++){
                     if(imoveis[i]->getTipoImovel() == 1)
@@ -394,8 +395,22 @@ int main()
                         ExibeTerreno(imoveis[i]);
                     cout << endl;
                 }
+                cout << "\t\t [" <<tamanho << "] " <<  "IMOVEIS CADASTRADOS. \n\n"<< endl;
                 break;
+                }
+            case 6:
+                    SalvaDados(imoveis);
+                    cout << "\t\t DADOS SALVOS!" << endl;
+                    break;
 
+            case 7:
+                return 0;
+
+            default:
+                {
+                cout << "\t\t Opcao invalida." << endl;
+                break;
+                }
         }
     }
 
