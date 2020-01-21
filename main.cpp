@@ -305,37 +305,25 @@ vector<Imovel*> LeArquivo(){
     while(1){
         if(arquivo.bad() || arquivo.eof() || arquivo.fail()) break;
         getline(arquivo,titulo);
-        cout << "TITULO: " << titulo << endl;
         arquivo >> tipoImov;
-        cout << "TIPO IMOVEL: " << tipoImov << endl;
         arquivo.ignore();
         getline(arquivo,rua);
-        cout << "RUA: " << rua << endl;
         getline(arquivo,bairro);
-        cout << "BAIRRO: " << bairro << endl;
         getline(arquivo,cidade);
-        cout << "CIDADE: " << cidade << endl;
         arquivo >> numero;
-        cout << "NUMERO: " << numero << endl;
         arquivo.ignore();
         getline(arquivo,cepe);
-        cout << "CEP: " << cepe << endl;
         arquivo >> tNegocio;
-        cout << "TIPO DE NEGOCIO: " << tNegocio << endl;
+        arquivo.ignore();
         arquivo >> value;
-        cout << "VALOR: " << value << endl;
+        arquivo.ignore();
 
             switch(tipoImov){
                 case 1:
                 arquivo >> areas;
-                cout << "AREA TERRENO: " << areas << endl;
                 arquivo >> areaconstruida;
-                cout << "AREA CONSTRUIDA: " << areaconstruida << endl;
                 arquivo >> pavimentos;
-                cout << "PAVIMENTOS: " << pavimentos << endl;
                 arquivo >> quartos;
-                cout << "QUARTOS: " << quartos << endl;
-
                 imoveis.push_back(new Casa(titulo,rua,bairro,cepe,cidade,numero,value,tNegocio,pavimentos,quartos,areas,areaconstruida));
                     break;
            /*     case 2:
