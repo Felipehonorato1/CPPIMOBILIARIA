@@ -1,4 +1,4 @@
-APTO
+ APTO
 2
 123
 123
@@ -6,10 +6,33 @@ APTO
 123
 123
 V
+123.00
 123
 123
+123.00
+123.00
 123
 123
-123
-123
-123
+ Casa
+1
+Rua dos Potes
+Ipes
+Joao Pessoa
+6
+58020-999
+V
+1000000.00
+500.00
+350.00
+2
+4
+ Baldio
+3
+Rua Quinto dos Infernos
+Geisel
+Joao Pessoa
+9
+58067-63
+V
+200000.00
+200.00

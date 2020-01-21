@@ -179,6 +179,9 @@ void CadastraTerreno(vector<Imovel*> &imoveis)
 
 void ExibeCasa(Imovel* casa)
 {
+    cout.precision(2);
+    cout << fixed;
+
     cout << "\t\t\t " << casa->getTitulo() << endl;
 
     cout << "\t\t Endereco: " << casa->getEndereco() << endl;
@@ -201,6 +204,9 @@ void ExibeCasa(Imovel* casa)
 
 void ExibeApartamento(Imovel* apartamento)
 {
+    cout.precision(2);
+    cout << fixed;
+
     cout << "\t\t\t " << apartamento->getTitulo() << endl;
 
     cout << "\t\t Endereco: " << apartamento->getEndereco() << endl;
@@ -227,6 +233,9 @@ void ExibeApartamento(Imovel* apartamento)
 
 void ExibeTerreno(Imovel* terreno)
 {
+    cout.precision(2);
+    cout << fixed;
+
     cout << "\t\t\t " << terreno->getTitulo() << endl;
 
     cout << "\t\t Endereco: " << terreno->getEndereco() << endl;
@@ -252,43 +261,43 @@ void SalvaDados(vector<Imovel*> imoveis)
 
     unsigned int tamanho = imoveis.size(); //a chamada da função size() no for é custosa, é mais recomendável que se crie uma variável com o seu valor
     for(unsigned int i = 0; i < tamanho; i++){
-                    arquivo << imoveis[i]->getTitulo() << endl;
-                    arquivo << imoveis[i]->getTipoImovel() << endl;
-                    arquivo << imoveis[i]->getLogradouro() << endl;
-                    arquivo << imoveis[i]->getBairro() << endl;
-                    arquivo << imoveis[i]->getCidade() << endl;
-                    arquivo << imoveis[i]->getNumero() << endl;
-                    arquivo << imoveis[i]->getCEP() << endl;
-                    arquivo << imoveis[i]->getTipoNegocio() << endl;
-                    arquivo << imoveis[i]->getValor() << endl;
 
-            switch(imoveis[i]->getTipoImovel()){
+        arquivo.precision(2);
+        arquivo << fixed;
+        arquivo << " " << imoveis[i]->getTitulo() << endl;
+        arquivo << imoveis[i]->getTipoImovel() << endl;
+        arquivo << imoveis[i]->getLogradouro() << endl;
+        arquivo << imoveis[i]->getBairro() << endl;
+        arquivo << imoveis[i]->getCidade() << endl;
+        arquivo << imoveis[i]->getNumero() << endl;
+        arquivo << imoveis[i]->getCEP() << endl;
+        arquivo << imoveis[i]->getTipoNegocio() << endl;
+        arquivo << imoveis[i]->getValor() << endl;
 
-                case 1: //SGINIFICANOD Q EH CASA
+        switch(imoveis[i]->getTipoImovel()){
+            case 1: //SIGNIFICANDO QUE É CASA
+                arquivo << imoveis[i]->getAreaTerreno() << endl;
+                arquivo << imoveis[i]->getAreaConstruida() << endl;
+                arquivo << imoveis[i]->getPavimentos() << endl;
+                arquivo << imoveis[i]->getQuartos() << endl;
+                break;
 
-                    arquivo << imoveis[i]->getAreaTerreno() << endl;
-                    arquivo << imoveis[i]->getAreaConstruida() << endl;
-                    arquivo << imoveis[i]->getPavimentos() << endl;
-                    arquivo << imoveis[i]->getQuartos() << endl;
-                    break;
+            case 2: //SIGNIFICANDO QUE É UM APTO, PEGAR OS ATRIBUTOS DOS APARTAMENTOS
+                arquivo << imoveis[i]->getPosicao() << endl;
+                arquivo << imoveis[i]->getVagasGaragem() << endl;
+                arquivo << imoveis[i]->getValorCondominio() << endl;
+                arquivo << imoveis[i]->getArea() << endl;
+                arquivo << imoveis[i]->getAndar() << endl;
+                arquivo << imoveis[i]->getQuartos() << endl;
+                break;
 
-                case 2: //SIGNIFICANDO QUE É UM APTO, PEGAR OS ATRIBUTOS DOS APARTAMENTOS
-
-                    arquivo << imoveis[i]->getPosicao() << endl;
-                    arquivo << imoveis[i]->getVagasGaragem() << endl;
-                    arquivo << imoveis[i]->getValorCondominio() << endl;
-                    arquivo << imoveis[i]->getArea() << endl;
-                    arquivo << imoveis[i]->getAndar() << endl;
-                    arquivo << imoveis[i]->getQuartos() << endl;
-                    break;
-                case 3: //SIGNIFICANDO Q EH UM LOTE
-
-                    arquivo << imoveis[i]->getAreaTerreno() << endl;
-                    break;
-                }
+            case 3: //SIGNIFICANDO QUE É UM TERRENO
+                arquivo << imoveis[i]->getArea() << endl;
+                break;
+        }
     }
     arquivo.close();
-    }
+}
 
 vector<Imovel*> LeArquivo(){
     vector<Imovel*> imoveis;
@@ -304,8 +313,8 @@ vector<Imovel*> LeArquivo(){
     char tNegocio;
     double value,valorCondominio;
 
-    while(1){
-        if(arquivo.bad() || arquivo.eof() || arquivo.fail()) break;
+    arquivo.ignore();
+    while(!(arquivo.bad() || arquivo.eof() || arquivo.fail())){
         getline(arquivo,titulo);
         arquivo >> tipoImov;
         arquivo.ignore();
@@ -318,19 +327,16 @@ vector<Imovel*> LeArquivo(){
         arquivo >> tNegocio;
         arquivo >> value;
 
-            switch(tipoImov){
-                case 1:
-                {
+        switch(tipoImov){
+            case 1:
                 arquivo >> areas;
                 arquivo >> areaconstruida;
                 arquivo >> pavimentos;
                 arquivo >> quartos;
-                Casa *casa = new Casa(titulo,rua,bairro,cepe,cidade,numero,value,tNegocio,pavimentos,quartos,areas,areaconstruida);
-                imoveis.push_back(casa);
-                    break;
-                    }
-                case 2:
-                    {
+                imoveis.push_back(new Casa(titulo,rua,bairro,cepe,cidade,numero,value,tNegocio,pavimentos,quartos,areas,areaconstruida));
+                break;
+
+            case 2:
                 arquivo >> posicao;
                 arquivo >> vagasGaragem;
                 arquivo >> valorCondominio;
@@ -338,14 +344,14 @@ vector<Imovel*> LeArquivo(){
                 arquivo >> andar;
                 arquivo >> quartos;
                 imoveis.push_back(new Apartamento(titulo,rua,bairro,cepe,cidade,numero,value,tNegocio,areas,valorCondominio,quartos,andar,vagasGaragem,posicao));
-                    break;
-                    }
-//                case 3:
-//
-//
-//                imoveis.push_back(new Terreno()
-//                    break;
-            }
+                break;
+            case 3:
+                arquivo >> areas;
+                imoveis.push_back(new Terreno(titulo, rua, bairro, cepe, cidade, numero, value, tNegocio, areas));
+                break;
+        }
+        arquivo.ignore();
+        arquivo.ignore();
     }
 
     arquivo.close();
@@ -395,22 +401,20 @@ int main()
                         ExibeTerreno(imoveis[i]);
                     cout << endl;
                 }
-                cout << "\t\t [" <<tamanho << "] " <<  "IMOVEIS CADASTRADOS. \n\n"<< endl;
+                cout << "\t\t [" <<tamanho << "] " <<  "IMOVEIS CADASTRADOS"<< endl;
                 break;
                 }
             case 6:
                     SalvaDados(imoveis);
-                    cout << "\t\t DADOS SALVOS!" << endl;
+                    cout << endl << "\t\t DADOS SALVOS" << endl;
                     break;
 
             case 7:
                 return 0;
 
             default:
-                {
                 cout << "\t\t Opcao invalida." << endl;
                 break;
-                }
         }
     }
 
