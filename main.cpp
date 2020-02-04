@@ -5,6 +5,7 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <ctype.h>
 
 using namespace std;
 
@@ -27,6 +28,357 @@ void MenuTipoImovel()
     cout << "\t\t [2] Apartamento" << endl;
     cout << "\t\t [3] Terreno" << endl;
     cout << "==================================================================================" << endl;
+}
+
+void MenuBuscarImovel()
+{
+    cout << "==================================================================================" << endl;
+    cout << "\t\t [1] Busca por bairro" << endl;
+    cout << "\t\t [2] Busca por cidade" << endl;
+    cout << "\t\t [3] Busca por titulo" << endl;
+    cout << "\t\t [4] Busca por valor" << endl;
+    cout << "==================================================================================" << endl;
+}
+
+void BuscaBairro(vector<Imovel*> imoveis, string bairro)
+{
+//    string nova_s;
+//    for (int i = 0; i < imoveis[i]->getBairro().length(); i++) {
+//        nova_s += tolower(imoveis[i]->getBairro()[i]);
+//    }
+//        cout << nova_s;
+
+    int encontrou = 0;
+    unsigned int tamanho = imoveis.size();
+    for(unsigned int i = 0; i < tamanho; i++){
+        //if(imoveis[i]->getBairro().compare(bairro)==0 || imoveis[i]->getBairro().compare(0,3,bairro)==0){
+        if(imoveis[i]->getBairro().find(bairro) != string::npos){
+            if(imoveis[i]->getTipoImovel() == 1){
+                cout.precision(2);
+                cout << fixed;
+
+                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+
+                cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
+
+                cout << "\t\t Numero de pavimentos: " << imoveis[i]->getPavimentos() << endl;
+
+                cout << "\t\t Numero de quartos: " << imoveis[i]->getQuartos() << endl;
+
+                cout << "\t\t Area do terreno: " << imoveis[i]->getAreaTerreno() << "m2" << endl;
+
+                cout << "\t\t Area construida: " << imoveis[i]->getAreaConstruida() << "m2" << endl;
+
+                if (imoveis[i]->getTipoNegocio() == 'A' || imoveis[i]->getTipoNegocio() == 'a'){
+                cout << "\t\t Disponivel para aluguel" << endl;
+                }else if (imoveis[i]->getTipoNegocio() == 'V' || imoveis[i]->getTipoNegocio() == 'v'){
+                cout << "\t\t Disponivel para venda" << endl;}
+
+                cout << "\t\t Valor: R$" << imoveis[i]->getValor() << endl;
+                encontrou++;
+            }else if(imoveis[i]->getTipoImovel() == 2){
+                cout.precision(2);
+                cout << fixed;
+
+                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+
+                cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
+
+                cout << "\t\t Andar: " << imoveis[i]->getAndar() << endl;
+
+                cout << "\t\t Numero de quartos: " << imoveis[i]->getQuartos() << endl;
+
+                cout << "\t\t Numero de vagas na garagem: " << imoveis[i]->getVagasGaragem() << endl;
+
+                cout << "\t\t Area: " << imoveis[i]->getArea() << "m2" << endl;
+
+                cout << "\t\t Posicao: " << imoveis[i]->getPosicao() << endl;
+
+                cout << "\t\t Valor do condominio: R$" << imoveis[i]->getValorCondominio() << endl;
+
+                if (imoveis[i]->getTipoNegocio() == 'A' || imoveis[i]->getTipoNegocio() == 'a')
+                    cout << "\t\t Disponivel para aluguel" << endl;
+                else if (imoveis[i]->getTipoNegocio() == 'V' || imoveis[i]->getTipoNegocio() == 'v')
+                    cout << "\t\t Disponivel para venda" << endl;
+
+                cout << "\t\t Valor: R$" << imoveis[i]->getValor() << endl;
+                encontrou++;
+            }else{
+                cout.precision(2);
+                cout << fixed;
+
+                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+
+                cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
+
+                cout << "\t\t Area: " << imoveis[i]->getArea() << "m2" << endl;
+
+                if (imoveis[i]->getTipoNegocio() == 'A' || imoveis[i]->getTipoNegocio() == 'a')
+                    cout << "\t\t Disponivel para aluguel" << endl;
+                else if (imoveis[i]->getTipoNegocio() == 'V' || imoveis[i]->getTipoNegocio() == 'v')
+                    cout << "\t\t Disponivel para venda" << endl;
+
+                cout << "\t\t Valor: R$" << imoveis[i]->getValor() << endl;
+                encontrou++;
+            }
+        cout << endl;
+        }
+        if(i == (tamanho-1) && encontrou == 0){
+        cout << "\n\t\tIMOVEL NAO ENCONTRADO!!" << endl;
+        }
+    }
+
+}
+
+void BuscaCidade(vector<Imovel*> imoveis, string cidade)
+{
+    int encontrou = 0;
+    unsigned int tamanho = imoveis.size();
+    for(unsigned int i = 0; i < tamanho; i++){
+        //if(imoveis[i]->getCidade().compare(cidade)==0 || imoveis[i]->getCidade().compare(0,3,cidade)==0){
+        if(imoveis[i]->getCidade().find(cidade) != string::npos){
+            if(imoveis[i]->getTipoImovel() == 1){
+                cout.precision(2);
+                cout << fixed;
+
+                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+
+                cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
+
+                cout << "\t\t Numero de pavimentos: " << imoveis[i]->getPavimentos() << endl;
+
+                cout << "\t\t Numero de quartos: " << imoveis[i]->getQuartos() << endl;
+
+                cout << "\t\t Area do terreno: " << imoveis[i]->getAreaTerreno() << "m2" << endl;
+
+                cout << "\t\t Area construida: " << imoveis[i]->getAreaConstruida() << "m2" << endl;
+
+                if (imoveis[i]->getTipoNegocio() == 'A' || imoveis[i]->getTipoNegocio() == 'a'){
+                cout << "\t\t Disponivel para aluguel" << endl;
+                }else if (imoveis[i]->getTipoNegocio() == 'V' || imoveis[i]->getTipoNegocio() == 'v'){
+                cout << "\t\t Disponivel para venda" << endl;}
+
+                cout << "\t\t Valor: R$" << imoveis[i]->getValor() << endl;
+                encontrou++;
+            }else if(imoveis[i]->getTipoImovel() == 2){
+                cout.precision(2);
+                cout << fixed;
+
+                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+
+                cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
+
+                cout << "\t\t Andar: " << imoveis[i]->getAndar() << endl;
+
+                cout << "\t\t Numero de quartos: " << imoveis[i]->getQuartos() << endl;
+
+                cout << "\t\t Numero de vagas na garagem: " << imoveis[i]->getVagasGaragem() << endl;
+
+                cout << "\t\t Area: " << imoveis[i]->getArea() << "m2" << endl;
+
+                cout << "\t\t Posicao: " << imoveis[i]->getPosicao() << endl;
+
+                cout << "\t\t Valor do condominio: R$" << imoveis[i]->getValorCondominio() << endl;
+
+                if (imoveis[i]->getTipoNegocio() == 'A' || imoveis[i]->getTipoNegocio() == 'a')
+                    cout << "\t\t Disponivel para aluguel" << endl;
+                else if (imoveis[i]->getTipoNegocio() == 'V' || imoveis[i]->getTipoNegocio() == 'v')
+                    cout << "\t\t Disponivel para venda" << endl;
+
+                cout << "\t\t Valor: R$" << imoveis[i]->getValor() << endl;
+                encontrou++;
+            }else{
+                cout.precision(2);
+                cout << fixed;
+
+                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+
+                cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
+
+                cout << "\t\t Area: " << imoveis[i]->getArea() << "m2" << endl;
+
+                if (imoveis[i]->getTipoNegocio() == 'A' || imoveis[i]->getTipoNegocio() == 'a')
+                    cout << "\t\t Disponivel para aluguel" << endl;
+                else if (imoveis[i]->getTipoNegocio() == 'V' || imoveis[i]->getTipoNegocio() == 'v')
+                    cout << "\t\t Disponivel para venda" << endl;
+
+                cout << "\t\t Valor: R$" << imoveis[i]->getValor() << endl;
+                encontrou++;
+            }
+        cout << endl;
+        }
+        if(i == (tamanho-1) && encontrou == 0){
+        cout << "\n\t\tIMOVEL NAO ENCONTRADO!!" << endl;
+        }
+    }
+
+}
+
+void BuscaTitulo(vector<Imovel*> imoveis, string titulo)
+{
+    int encontrou = 0;
+    unsigned int tamanho = imoveis.size();
+    for(unsigned int i = 0; i < tamanho; i++){
+        //if(imoveis[i]->getTitulo().compare(titulo)==0 || imoveis[i]->getTitulo().compare(0,3,titulo)==0){
+          if(imoveis[i]->getTitulo().find(titulo) != string::npos){
+            if(imoveis[i]->getTipoImovel() == 1){
+                cout.precision(2);
+                cout << fixed;
+
+                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+
+                cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
+
+                cout << "\t\t Numero de pavimentos: " << imoveis[i]->getPavimentos() << endl;
+
+                cout << "\t\t Numero de quartos: " << imoveis[i]->getQuartos() << endl;
+
+                cout << "\t\t Area do terreno: " << imoveis[i]->getAreaTerreno() << "m2" << endl;
+
+                cout << "\t\t Area construida: " << imoveis[i]->getAreaConstruida() << "m2" << endl;
+
+                if (imoveis[i]->getTipoNegocio() == 'A' || imoveis[i]->getTipoNegocio() == 'a'){
+                cout << "\t\t Disponivel para aluguel" << endl;
+                }else if (imoveis[i]->getTipoNegocio() == 'V' || imoveis[i]->getTipoNegocio() == 'v'){
+                cout << "\t\t Disponivel para venda" << endl;}
+
+                cout << "\t\t Valor: R$" << imoveis[i]->getValor() << endl;
+                encontrou++;
+            }else if(imoveis[i]->getTipoImovel() == 2){
+                cout.precision(2);
+                cout << fixed;
+
+                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+
+                cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
+
+                cout << "\t\t Andar: " << imoveis[i]->getAndar() << endl;
+
+                cout << "\t\t Numero de quartos: " << imoveis[i]->getQuartos() << endl;
+
+                cout << "\t\t Numero de vagas na garagem: " << imoveis[i]->getVagasGaragem() << endl;
+
+                cout << "\t\t Area: " << imoveis[i]->getArea() << "m2" << endl;
+
+                cout << "\t\t Posicao: " << imoveis[i]->getPosicao() << endl;
+
+                cout << "\t\t Valor do condominio: R$" << imoveis[i]->getValorCondominio() << endl;
+
+                if (imoveis[i]->getTipoNegocio() == 'A' || imoveis[i]->getTipoNegocio() == 'a')
+                    cout << "\t\t Disponivel para aluguel" << endl;
+                else if (imoveis[i]->getTipoNegocio() == 'V' || imoveis[i]->getTipoNegocio() == 'v')
+                    cout << "\t\t Disponivel para venda" << endl;
+
+                cout << "\t\t Valor: R$" << imoveis[i]->getValor() << endl;
+                encontrou++;
+            }else{
+                cout.precision(2);
+                cout << fixed;
+
+                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+
+                cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
+
+                cout << "\t\t Area: " << imoveis[i]->getArea() << "m2" << endl;
+
+                if (imoveis[i]->getTipoNegocio() == 'A' || imoveis[i]->getTipoNegocio() == 'a')
+                    cout << "\t\t Disponivel para aluguel" << endl;
+                else if (imoveis[i]->getTipoNegocio() == 'V' || imoveis[i]->getTipoNegocio() == 'v')
+                    cout << "\t\t Disponivel para venda" << endl;
+
+                cout << "\t\t Valor: R$" << imoveis[i]->getValor() << endl;
+                encontrou++;
+            }
+        cout << endl;
+        }
+        if(i == (tamanho-1) && encontrou == 0){
+        cout << "\n\t\tIMOVEL NAO ENCONTRADO!!" << endl;
+        }
+    }
+
+}
+
+void BuscaPreco(vector<Imovel*> imoveis, double preco)
+{
+    int encontrou = 0;
+    unsigned int tamanho = imoveis.size();
+    for(unsigned int i = 0; i < tamanho; i++){
+        if(imoveis[i]->getValor()<=preco){
+            if(imoveis[i]->getTipoImovel() == 1){
+                cout.precision(2);
+                cout << fixed;
+
+                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+
+                cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
+
+                cout << "\t\t Numero de pavimentos: " << imoveis[i]->getPavimentos() << endl;
+
+                cout << "\t\t Numero de quartos: " << imoveis[i]->getQuartos() << endl;
+
+                cout << "\t\t Area do terreno: " << imoveis[i]->getAreaTerreno() << "m2" << endl;
+
+                cout << "\t\t Area construida: " << imoveis[i]->getAreaConstruida() << "m2" << endl;
+
+                if (imoveis[i]->getTipoNegocio() == 'A' || imoveis[i]->getTipoNegocio() == 'a'){
+                cout << "\t\t Disponivel para aluguel" << endl;
+                }else if (imoveis[i]->getTipoNegocio() == 'V' || imoveis[i]->getTipoNegocio() == 'v'){
+                cout << "\t\t Disponivel para venda" << endl;}
+
+                cout << "\t\t Valor: R$" << imoveis[i]->getValor() << endl;
+                encontrou++;
+            }else if(imoveis[i]->getTipoImovel() == 2){
+                cout.precision(2);
+                cout << fixed;
+
+                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+
+                cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
+
+                cout << "\t\t Andar: " << imoveis[i]->getAndar() << endl;
+
+                cout << "\t\t Numero de quartos: " << imoveis[i]->getQuartos() << endl;
+
+                cout << "\t\t Numero de vagas na garagem: " << imoveis[i]->getVagasGaragem() << endl;
+
+                cout << "\t\t Area: " << imoveis[i]->getArea() << "m2" << endl;
+
+                cout << "\t\t Posicao: " << imoveis[i]->getPosicao() << endl;
+
+                cout << "\t\t Valor do condominio: R$" << imoveis[i]->getValorCondominio() << endl;
+
+                if (imoveis[i]->getTipoNegocio() == 'A' || imoveis[i]->getTipoNegocio() == 'a')
+                    cout << "\t\t Disponivel para aluguel" << endl;
+                else if (imoveis[i]->getTipoNegocio() == 'V' || imoveis[i]->getTipoNegocio() == 'v')
+                    cout << "\t\t Disponivel para venda" << endl;
+
+                cout << "\t\t Valor: R$" << imoveis[i]->getValor() << endl;
+                encontrou++;
+            }else{
+                cout.precision(2);
+                cout << fixed;
+
+                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+
+                cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
+
+                cout << "\t\t Area: " << imoveis[i]->getArea() << "m2" << endl;
+
+                if (imoveis[i]->getTipoNegocio() == 'A' || imoveis[i]->getTipoNegocio() == 'a')
+                    cout << "\t\t Disponivel para aluguel" << endl;
+                else if (imoveis[i]->getTipoNegocio() == 'V' || imoveis[i]->getTipoNegocio() == 'v')
+                    cout << "\t\t Disponivel para venda" << endl;
+
+                cout << "\t\t Valor: R$" << imoveis[i]->getValor() << endl;
+                encontrou++;
+            }
+        cout << endl;
+        }
+        if(i == (tamanho-1) && encontrou == 0){
+        cout << "\n\t\tIMOVEL NAO ENCONTRADO!!" << endl;
+        }
+    }
+
 }
 
 void CadastraCasa(vector<Imovel*> &imoveis)
@@ -366,7 +718,9 @@ int main()
     {
         MenuPrincipal();
         cout << "\t\t Digite uma opcao: ";
-        int opcao, tipoImovel;
+        int opcao, tipoImovel, tipoBusca;
+        string bairro, cidade, titulo;
+        double preco;
         cin >> opcao;
 
         switch(opcao)
@@ -404,6 +758,52 @@ int main()
                 cout << "\t\t [" <<tamanho << "] " <<  "IMOVEIS CADASTRADOS"<< endl;
                 break;
                 }
+            case 3:
+                {
+                    MenuBuscarImovel();
+                    cout << "\t\t Digite uma opcao: ";
+                    cin >> tipoBusca;
+                    cout << endl;
+
+                    switch(tipoBusca)
+                    {
+                        case 1:
+                        {
+                            cout << "\t\t Digite o bairro: ";
+                            cin.ignore();
+                            getline(cin, bairro);
+                            BuscaBairro(imoveis, bairro);
+                            break;
+                        }
+                            case 2:
+                                {
+                                cout << "\t\t Digite a cidade: ";
+                                cin.ignore();
+                                getline(cin, cidade);
+                                BuscaCidade(imoveis, cidade);
+                                break;
+                            }
+                            case 3:
+                                {
+                                cout << "\t\t Digite o titulo: ";
+                                cin.ignore();
+                                getline(cin, titulo);
+                                BuscaTitulo(imoveis, titulo);
+                                break;
+                            }
+                            case 4:
+                                {
+                                cout << "\t\t Digite o preco do imovel: ";
+                                cin >> preco;
+                                BuscaPreco(imoveis, preco);
+                                break;
+                                }
+
+                        break;
+                    }
+                    break;
+                }
+
             case 6:
                     SalvaDados(imoveis);
                     cout << endl << "\t\t DADOS SALVOS" << endl;
