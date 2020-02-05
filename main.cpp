@@ -40,24 +40,40 @@ void MenuBuscarImovel()
     cout << "==================================================================================" << endl;
 }
 
+void MenuEdita(){
+	cout << "==================================================================================" << endl;
+    cout << "\t\t [1] Editar titulo do imovel" << endl;
+    cout << "\t\t [2] Editar valor do imovel" << endl;
+    cout << "==================================================================================" << endl;
+}
+
+void MenuEdita2(){
+	cout << "==================================================================================" << endl;
+    cout << "\t\t [1] Editar titulo do imovel" << endl;
+    cout << "\t\t [2] Editar valor do imovel" << endl;
+    cout << "\t\t [3] Editar valor do condominio" << endl;
+    cout << "==================================================================================" << endl;
+}
+
+string tl(string s) {
+    string nova_s;
+    for (int i = 0; i < s.length(); i++) {
+        nova_s += tolower(s[i]);
+    }
+    return nova_s;
+}
+
 void BuscaBairro(vector<Imovel*> imoveis, string bairro)
 {
-//    string nova_s;
-//    for (int i = 0; i < imoveis[i]->getBairro().length(); i++) {
-//        nova_s += tolower(imoveis[i]->getBairro()[i]);
-//    }
-//        cout << nova_s;
-
     int encontrou = 0;
     unsigned int tamanho = imoveis.size();
     for(unsigned int i = 0; i < tamanho; i++){
-        //if(imoveis[i]->getBairro().compare(bairro)==0 || imoveis[i]->getBairro().compare(0,3,bairro)==0){
-        if(imoveis[i]->getBairro().find(bairro) != string::npos){
+        if(tl(imoveis[i]->getBairro()).find(tl(bairro)) != string::npos){
             if(imoveis[i]->getTipoImovel() == 1){
                 cout.precision(2);
                 cout << fixed;
 
-                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+                cout << "\t\t [" << i+1 << "]\t" << imoveis[i]->getTitulo() << endl;
 
                 cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
 
@@ -80,7 +96,7 @@ void BuscaBairro(vector<Imovel*> imoveis, string bairro)
                 cout.precision(2);
                 cout << fixed;
 
-                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+                cout << "\t\t [" << i+1 << "]\t"  << imoveis[i]->getTitulo() << endl;
 
                 cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
 
@@ -107,7 +123,7 @@ void BuscaBairro(vector<Imovel*> imoveis, string bairro)
                 cout.precision(2);
                 cout << fixed;
 
-                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+                cout << "\t\t[" << i+1 << "]\t"  << imoveis[i]->getTitulo() << endl;
 
                 cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
 
@@ -135,13 +151,12 @@ void BuscaCidade(vector<Imovel*> imoveis, string cidade)
     int encontrou = 0;
     unsigned int tamanho = imoveis.size();
     for(unsigned int i = 0; i < tamanho; i++){
-        //if(imoveis[i]->getCidade().compare(cidade)==0 || imoveis[i]->getCidade().compare(0,3,cidade)==0){
-        if(imoveis[i]->getCidade().find(cidade) != string::npos){
+        if(tl(imoveis[i]->getCidade()).find(tl(cidade)) != string::npos){
             if(imoveis[i]->getTipoImovel() == 1){
                 cout.precision(2);
                 cout << fixed;
 
-                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+                cout << "\t\t[" << i+1 << "]\t"  << imoveis[i]->getTitulo() << endl;
 
                 cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
 
@@ -164,7 +179,7 @@ void BuscaCidade(vector<Imovel*> imoveis, string cidade)
                 cout.precision(2);
                 cout << fixed;
 
-                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+                cout << "\t\t[" << i+1 << "]\t"  << imoveis[i]->getTitulo() << endl;
 
                 cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
 
@@ -191,7 +206,7 @@ void BuscaCidade(vector<Imovel*> imoveis, string cidade)
                 cout.precision(2);
                 cout << fixed;
 
-                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+                cout << "\t\t[" << i+1 << "]\t"  << imoveis[i]->getTitulo() << endl;
 
                 cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
 
@@ -219,13 +234,12 @@ void BuscaTitulo(vector<Imovel*> imoveis, string titulo)
     int encontrou = 0;
     unsigned int tamanho = imoveis.size();
     for(unsigned int i = 0; i < tamanho; i++){
-        //if(imoveis[i]->getTitulo().compare(titulo)==0 || imoveis[i]->getTitulo().compare(0,3,titulo)==0){
-          if(imoveis[i]->getTitulo().find(titulo) != string::npos){
+          if(tl(imoveis[i]->getTitulo()).find(tl(titulo)) != string::npos){
             if(imoveis[i]->getTipoImovel() == 1){
                 cout.precision(2);
                 cout << fixed;
 
-                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+                cout << "\t\t[" << i+1 << "]\t"  << imoveis[i]->getTitulo() << endl;
 
                 cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
 
@@ -248,7 +262,7 @@ void BuscaTitulo(vector<Imovel*> imoveis, string titulo)
                 cout.precision(2);
                 cout << fixed;
 
-                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+                cout << "\t\t[" << i+1 << "]\t"  << imoveis[i]->getTitulo() << endl;
 
                 cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
 
@@ -275,7 +289,7 @@ void BuscaTitulo(vector<Imovel*> imoveis, string titulo)
                 cout.precision(2);
                 cout << fixed;
 
-                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+                cout << "\t\t[" << i+1 << "]\t"  << imoveis[i]->getTitulo() << endl;
 
                 cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
 
@@ -308,7 +322,7 @@ void BuscaPreco(vector<Imovel*> imoveis, double preco)
                 cout.precision(2);
                 cout << fixed;
 
-                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+                cout << "\t\t[" << i+1 << "]\t"  << imoveis[i]->getTitulo() << endl;
 
                 cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
 
@@ -331,7 +345,7 @@ void BuscaPreco(vector<Imovel*> imoveis, double preco)
                 cout.precision(2);
                 cout << fixed;
 
-                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+                cout << "\t\t[" << i+1 << "]\t"  << imoveis[i]->getTitulo() << endl;
 
                 cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
 
@@ -358,7 +372,7 @@ void BuscaPreco(vector<Imovel*> imoveis, double preco)
                 cout.precision(2);
                 cout << fixed;
 
-                cout << "\t\t\t " << imoveis[i]->getTitulo() << endl;
+                cout << "\t\t[" << i+1 << "]\t"  << imoveis[i]->getTitulo() << endl;
 
                 cout << "\t\t Endereco: " << imoveis[i]->getEndereco() << endl;
 
@@ -718,9 +732,9 @@ int main()
     {
         MenuPrincipal();
         cout << "\t\t Digite uma opcao: ";
-        int opcao, tipoImovel, tipoBusca;
-        string bairro, cidade, titulo;
-        double preco;
+        int opcao, tipoImovel, tipoBusca, indice;
+        string bairro, cidade, titulo, novoTitulo;
+        double preco,novoValor,novoValorCond;
         cin >> opcao;
 
         switch(opcao)
@@ -804,6 +818,85 @@ int main()
                     break;
                 }
 
+            case 4:
+                {
+                    cout << "\n\t\t Digite o titulo: ";
+                    cin.ignore();
+                    getline(cin, titulo);
+                    cout << endl;
+                    BuscaTitulo(imoveis, titulo);
+                    cout << "\n\t\t Digite o indice do imovel a ser editado: ";
+                    cin >> indice;
+                    unsigned int tamanho = imoveis.size();
+                    for(unsigned int k = 0; k < tamanho; k++){
+                        if((k+1) == indice){
+                            if(imoveis[k]->getTipoImovel()==1 || imoveis[k]->getTipoImovel()==3){
+                                MenuEdita();
+                                cout << "\n\t\t Digite uma opcao: ";
+                                cin >> opcao;
+                                    if(opcao == 1){
+                                        cout << "\n\t\t Digite o novo titulo do imovel: ";
+                                        cin.ignore();
+                                        getline(cin, novoTitulo);
+                                        imoveis[k]->setTitulo(novoTitulo);
+                                        cout << "\n\t\t TITULO ALTERADO COM SUCESSO!" << endl;
+                                        break;
+                                    }else{
+                                        cout << "\n\t\t Digite o novo valor do imovel: ";
+                                        cin >> novoValor;
+                                        imoveis[k]->setValor(novoValor);
+                                        cout << "\n\t\t VALOR DO IMOVEL ALTERADO COM SUCESSO!" << endl;
+                                        break;}
+                            }else{
+                                MenuEdita2();
+                                cout << "\n\t\t Digite uma opcao: ";
+                                cin >> opcao;
+                                    if(opcao == 1){
+                                        cout << "\n\t\t Digite o novo titulo do imovel: ";
+                                        cin.ignore();
+                                        getline(cin, novoTitulo);
+                                        imoveis[k]->setTitulo(novoTitulo);
+                                        cout << "\n\t\t TITULO ALTERADO COM SUCESSO!" << endl;
+                                        break;
+                                    }else if(opcao == 2){
+                                        cout << "\n\t\t Digite o novo valor do imovel: ";
+                                        cin >> novoValor;
+                                        imoveis[k]->setValor(novoValor);
+                                        cout << "\n\t\t VALOR DO IMOVEL ALTERADO COM SUCESSO!" << endl;
+                                        break;
+                                    }else{
+                                        cout << "\n\t\t Digite o novo valor do imovel: ";
+                                        cin >> novoValorCond;
+                                        imoveis[k]->setValorCondominio(novoValorCond);
+                                        cout << "\n\t\t VALOR DO CONDOMINIO ALTERADO COM SUCESSO!" << endl;
+                                        break;}
+                                break;
+                            }
+                            break;
+                        }
+                    }
+                    break;
+                }
+
+            case 5:{
+                    cout << "\n\t\t Digite o titulo: ";
+                    cin.ignore();
+                    getline(cin, titulo);
+                    cout << endl;
+                    BuscaTitulo(imoveis, titulo);
+                    cout << "\n\t\t Digite o indice do imovel a ser removido: ";
+                    cin >> indice;
+
+                    unsigned int tamanho = imoveis.size();
+                    for(unsigned int j = 1; j <= tamanho; j++){
+                        if(j == indice){
+                            imoveis.erase(imoveis.begin()+(j-1));
+                            cout << "\n\t\t IMOVEL REMOVIDO COM SUCESSO!" << endl;
+                        }else{
+                            break;}
+                    }
+                    break;
+            }
             case 6:
                     SalvaDados(imoveis);
                     cout << endl << "\t\t DADOS SALVOS" << endl;
