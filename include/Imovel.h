@@ -10,8 +10,10 @@ class Imovel
 
         int getTipoImovel();
 
+        void setTitulo(std::string t);
         std::string getTitulo();
 
+        void setValor(double v);
         double getValor();
 
         char getTipoNegocio();
@@ -42,6 +44,7 @@ class Imovel
 
         virtual double getArea();
 
+        virtual void setValorCondominio(double vC);
         virtual double getValorCondominio();
 
         virtual std::string getPosicao();

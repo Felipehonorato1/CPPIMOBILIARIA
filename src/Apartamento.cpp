@@ -61,6 +61,10 @@ double Apartamento::getArea()
     return area;
 }
 
+void Apartamento::setValorCondominio(double vC)
+{
+    valorCondominio = vC;
+}
 double Apartamento::getValorCondominio()
 {
     return valorCondominio;

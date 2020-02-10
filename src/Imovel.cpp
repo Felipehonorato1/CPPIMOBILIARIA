@@ -11,11 +11,19 @@ int Imovel::getTipoImovel()
     return tipoImovel;
 }
 
+void Imovel::setTitulo(std::string t)
+{
+    titulo = t;
+}
 std::string Imovel::getTitulo()
 {
     return titulo;
 }
 
+void Imovel::setValor(double v)
+{
+    valor = v;
+}
 double Imovel::getValor()
 {
     return valor;
@@ -69,6 +77,10 @@ double Imovel::getArea()
     return 0;
 }
 
+void Imovel::setValorCondominio(double vC)
+{
+
+}
 double Imovel::getValorCondominio()
 {
     return 0;
