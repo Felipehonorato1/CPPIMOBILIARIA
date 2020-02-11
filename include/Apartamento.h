@@ -19,8 +19,9 @@ class Apartamento : public Imovel
 
         double getArea();
 
-        void setValorCondominio(double vC);
         double getValorCondominio();
+
+        void setValorCondominio(double vc);
 
         std::string getPosicao();
 

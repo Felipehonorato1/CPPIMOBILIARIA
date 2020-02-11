@@ -135,38 +135,3 @@
 1580926969 source:c:\users\duda\desktop\p2 ec duda\llp\projeto 2 cpp imobiliaria\cppimobiliaria-master\src\apartamento.cpp
 	"Apartamento.h"
 
-1581348126 source:c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\cppimobiliaria-master\main.cpp
-	<iostream>
-	"Casa.h"
-	"Apartamento.h"
-	"Terreno.h"
-	<vector>
-	<fstream>
-	<sstream>
-	<ctype.h>
-
-1581345197 c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\cppimobiliaria-master\include\casa.h
-	<Imovel.h>
-
-1581348210 c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\cppimobiliaria-master\include\imovel.h
-	<string>
-
-1581348107 c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\cppimobiliaria-master\include\apartamento.h
-	<Imovel.h>
-
-1581345197 c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\cppimobiliaria-master\include\terreno.h
-	<Imovel.h>
-
-1581348107 source:c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\cppimobiliaria-master\src\apartamento.cpp
-	"Apartamento.h"
-
-1581345197 source:c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\cppimobiliaria-master\src\casa.cpp
-	"Casa.h"
-
-1581348260 source:c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\cppimobiliaria-master\src\imovel.cpp
-	"Imovel.h"
-	<sstream>
-
-1581345197 source:c:\users\larad\onedrive\documentos\faculdade\linguagem de programação i\projeto 2\cppimobiliaria-master\src\terreno.cpp
-	"Terreno.h"
-

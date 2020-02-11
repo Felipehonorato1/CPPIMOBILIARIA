@@ -1,3 +1,4 @@
+
 #include "Apartamento.h"
 
 Apartamento::Apartamento()
@@ -61,10 +62,6 @@ double Apartamento::getArea()
     return area;
 }
 
-void Apartamento::setValorCondominio(double vC)
-{
-    valorCondominio = vC;
-}
 double Apartamento::getValorCondominio()
 {
     return valorCondominio;
@@ -73,4 +70,8 @@ double Apartamento::getValorCondominio()
 std::string Apartamento::getPosicao()
 {
     return posicao;
+}
+
+void Apartamento::setValorCondominio(double vc){
+    valorCondominio = vc;
 }
