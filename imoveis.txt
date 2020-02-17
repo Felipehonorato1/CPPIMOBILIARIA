@@ -1,23 +1,23 @@
  Casa
 1
-Rua dos Potes
+Rua Joaquim Martins da Silva
 Ipes
 Joao Pessoa
 6
-58020-999
+58028-480
 V
 1000000.00
 500.00
 350.00
 2
 4
- Baldio
+ Proximo ao Shopping Tambia
 3
-Rua Quinto dos Infernos
-Geisel
+Rua Deputado Odon Bezerra
+Tambia
 Joao Pessoa
-9
-58067-63
-V
+170
+58020-500
+a
 200000.00
 200.00
